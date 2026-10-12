@@ -16,7 +16,6 @@ from app.authentication import (
 router = APIRouter(prefix="/users", tags=["users"])
 
 
-# USER REGISTRATION
 @router.post("/register", status_code=status.HTTP_201_CREATED)
 def register_user(
     user: UserCreate,
@@ -49,7 +48,6 @@ def register_user(
     }
 
 
-# USER LOGIN
 @router.post("/login")
 def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
@@ -82,7 +80,7 @@ def login(
     }
 
 
-# GET CURRENT USER — PROTECTED ENDPOINT
+
 @router.get("/me")
 def get_current_user(
     token: str = Depends(oauth2_scheme),
